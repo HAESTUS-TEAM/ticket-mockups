@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Interactive mockup — quick-prefill email domain buttons</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  }
+  .ticket-bar {
+    background: #2c4250;
+    color: #fff;
+    padding: 10px 32px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ticket-bar a { color: #fff; text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.5); }
+  .ticket-bar a:hover { border-bottom-style: solid; }
+  .ticket-bar .label { opacity: 0.7; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+  .container { padding: 32px; }
+  h1 { font-size: 18px; margin: 0 0 6px; color: #333; }
+  .subtitle { color: #777; font-size: 13px; margin-bottom: 20px; }
+  .banner {
+    background: #fff4e6; border: 1px solid #f0c692; color: #8a4a10;
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    padding: 8px 14px; border-radius: 6px; display: inline-flex; gap: 8px; margin-bottom: 18px;
+  }
+  .banner::before { content: "✏️"; font-size: 14px; }
+  .form-area { background: white; border: 1px solid #d8d8d8; border-radius: 8px; padding: 24px; max-width: 540px; }
+  .field-label { display: block; font-size: 12px; font-weight: 600; color: #555; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .email-input {
+    width: 100%; padding: 10px 12px; border: 2px solid #c8cdd2; border-radius: 6px;
+    box-sizing: border-box; font-size: 14px; font-family: inherit;
+  }
+  .email-input:focus { outline: none; border-color: #6B8E5C; }
+  .domain-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .domain-pill {
+    background: #fafafa; border: 1px solid #c8cdd2; color: #4F6D7A;
+    padding: 6px 12px; border-radius: 999px; font-size: 12px; font-weight: 500;
+    cursor: pointer; transition: all 0.15s ease; user-select: none;
+    font-family: inherit;
+  }
+  .domain-pill:hover { background: #4F6D7A; color: white; border-color: #4F6D7A; }
+  .domain-pill:active { transform: translateY(1px); }
+  .help { font-size: 11px; color: #888; margin-top: 12px; font-style: italic; }
+</style>
+</head>
+<body>
+<div class="ticket-bar">
+  <span><span class="label">Linear ticket:</span> <a href="https://linear.app/haestus/issue/HAE-23">HAE-23 — Quick-prefill email domain buttons</a></span>
+  <span class="label">Interactive mockup</span>
+</div>
+<div class="container">
+<div class="banner">Suggested mockup — not how the app currently looks</div>
+<div class="form-area">
+<label class="field-label" for="email">Email</label>
+<input id="email" class="email-input" type="email" placeholder="Type a username, then click a domain pill below">
+<div class="domain-pills">
+<button class="domain-pill" data-domain="@gmail.com">@gmail.com</button>
+<button class="domain-pill" data-domain="@yahoo.com">@yahoo.com</button>
+<button class="domain-pill" data-domain="@outlook.com">@outlook.com</button>
+<button class="domain-pill" data-domain="@hotmail.com">@hotmail.com</button>
+<button class="domain-pill" data-domain="@icloud.com">@icloud.com</button>
+</div>
+<div class="help">Try it: type "jane" in the email field, then click @gmail.com.</div>
+</div>
+</div>
+<script>
+document.querySelectorAll('.domain-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    const input = document.getElementById('email');
+    const domain = pill.dataset.domain;
+    let val = input.value.trim();
+    // If already has an @, replace the domain
+    if (val.includes('@')) {
+      val = val.split('@')[0];
+    }
+    input.value = val + domain;
+    input.focus();
+  });
+});
+</script>
+</body>
+</html>
