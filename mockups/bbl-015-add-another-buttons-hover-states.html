@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Interactive mockup demo — BBL-015 hover states</title>
+<style>
+  body {
+    margin: 0;
+    padding: 32px;
+    background: #f5f5f5;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  }
+  h1 { font-size: 18px; margin: 0 0 6px; color: #333; }
+  .subtitle { color: #777; font-size: 13px; margin-bottom: 20px; }
+  .banner {
+    background: #fff4e6;
+    border: 1px solid #f0c692;
+    color: #8a4a10;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .banner::before { content: "✏️"; font-size: 14px; }
+  .compare {
+    display: flex;
+    gap: 24px;
+  }
+  .panel {
+    background: white;
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    padding: 18px 20px;
+    flex: 1;
+  }
+  .panel.suggested { border-color: #6B8E5C; box-shadow: 0 0 0 2px rgba(107, 142, 92, 0.15); }
+  .panel-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+    font-family: ui-monospace, "SF Mono", "Menlo", monospace;
+  }
+  .panel.current .panel-label { color: #888; }
+  .panel.suggested .panel-label { color: #6B8E5C; }
+  .panel.current .panel-label::before { content: "📷  CURRENT (live app)"; }
+  .panel.suggested .panel-label::before { content: "✏️  SUGGESTED (mockup)"; }
+  .stack { display: flex; flex-direction: column; gap: 10px; }
+  /* Current — cheap dashed buttons */
+  .btn-cheap {
+    border: 2px dashed #4F6D7A;
+    background: transparent;
+    color: #4F6D7A;
+    padding: 9px 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-align: center;
+  }
+  .btn-cheap:hover { background: #2c4250; color: #fff; border-color: #2c4250; border-style: solid; }
+  .btn-cheap.emergency { border-color: #E07020; color: #E07020; }
+  .btn-cheap.emergency:hover { background: #E07020; color: #fff; border-style: solid; }
+  /* Suggested — restrained */
+  .btn-clean {
+    border: 1px solid #d0d0d0;
+    background: #fafafa;
+    color: #555;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-align: center;
+    font-family: inherit;
+  }
+  .btn-clean:hover { background: #f0f0f0; border-color: #b0b0b0; color: #333; }
+  .hint {
+    color: #999; font-size: 11px; font-style: italic; margin-top: 12px; text-align: center;
+  }
+</style>
+</head>
+<body>
+<h1>BBL-015 — "+ Add another..." buttons (interactive)</h1>
+<div class="subtitle">Mouse over each button to see the hover state. This is what a CodePen embed in Linear would feel like.</div>
+<div class="banner">Suggested mockup — not how the app currently looks</div>
+<div class="compare">
+  <div class="panel current">
+    <div class="panel-label"></div>
+    <div class="stack">
+      <button class="btn-cheap">+ Add another email</button>
+      <button class="btn-cheap">+ Add another phone</button>
+      <button class="btn-cheap emergency">+ Add emergency contact</button>
+    </div>
+    <div class="hint">↑ Hover to see current cheap-feeling hover states</div>
+  </div>
+  <div class="panel suggested">
+    <div class="panel-label"></div>
+    <div class="stack">
+      <button class="btn-clean">+ Add another email</button>
+      <button class="btn-clean">+ Add another phone</button>
+      <button class="btn-clean">+ Add emergency contact</button>
+    </div>
+    <div class="hint">↑ Hover to see the restrained suggested style</div>
+  </div>
+</div>
+</body>
+</html>
